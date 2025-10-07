@@ -239,4 +239,5 @@ Para soporte técnico o preguntas:
 
 ---
 
-**Desarrollado con ❤️ por pictoN**
+**Desarrollado con ❤️ por pictoN**  
+*Última actualización: Variables de entorno configuradas*

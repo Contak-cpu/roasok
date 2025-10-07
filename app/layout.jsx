@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Providers from './providers'
+import MetaPixelInit from '@/components/MetaPixelInit'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
           </header>
           <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <Providers>
+              <MetaPixelInit />
               {children}
             </Providers>
           </main>

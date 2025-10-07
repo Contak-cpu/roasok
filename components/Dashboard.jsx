@@ -14,6 +14,7 @@ import {
   CheckCircle,
   Info
 } from 'lucide-react'
+import MetaPixelButton from './MetaPixelButton'
 import { 
   calculateDailyProfitability, 
   validateCalculationInputs, 
@@ -21,6 +22,11 @@ import {
   formatCurrency,
   formatPercentage 
 } from '@/lib/profitability-calculator'
+import { 
+  trackProfitabilityCalculation, 
+  trackAdvertisingCost,
+  trackTiendanubeConnection 
+} from '@/lib/meta-pixel'
 
 export default function Dashboard() {
   const { data: session } = useSession()
@@ -64,10 +70,16 @@ export default function Dashboard() {
   }
 
   const handleCostChange = (field, value) => {
+    const numericValue = parseFloat(value) || 0
     setCosts(prev => ({
       ...prev,
-      [field]: parseFloat(value) || 0
+      [field]: numericValue
     }))
+
+    // Trackear costo publicitario si es relevante
+    if (field === 'advertisingCost' && numericValue > 0) {
+      trackAdvertisingCost(numericValue)
+    }
   }
 
   const calculateProfitability = () => {
@@ -85,6 +97,9 @@ export default function Dashboard() {
     const result = calculateDailyProfitability(salesData, costs)
     setCalculation(result)
     setError('')
+
+    // Trackear cálculo de rentabilidad
+    trackProfitabilityCalculation(result.profitability, result.isProfitable)
   }
 
   const recommendations = calculation ? generateRecommendations(calculation) : []
@@ -309,6 +324,9 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+
+          {/* Meta Pixel */}
+          <MetaPixelButton />
 
           {/* Acciones Rápidas */}
           <div className="card">

@@ -29,22 +29,22 @@ Una aplicación web full-stack que se conecta a la API de Tiendanube (Nuvemshop)
 
 ### 1. Clonar el repositorio
 
-\`\`\`bash
-git clone <tu-repositorio>
-cd tiendanube-profitability-calculator
-\`\`\`
+```bash
+git clone https://github.com/Contak-cpu/roasok.git
+cd roasok
+```
 
 ### 2. Instalar dependencias
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 ### 3. Configurar variables de entorno
 
-Crea un archivo \`.env.local\` en la raíz del proyecto:
+Crea un archivo `.env.local` en la raíz del proyecto:
 
-\`\`\`env
+```env
 # Tiendanube OAuth Configuration
 NEXT_PUBLIC_TIENDANUBE_CLIENT_ID=tu_client_id_aqui
 TIENDANUBE_CLIENT_SECRET=tu_client_secret_aqui
@@ -53,22 +53,22 @@ NEXT_PUBLIC_TIENDANUBE_REDIRECT_URI=http://localhost:3000/api/auth/callback/tien
 # NextAuth Configuration
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=tu_secret_muy_seguro_aqui
-\`\`\`
+```
 
 ### 4. Obtener credenciales de Tiendanube
 
 1. Ve a [Tiendanube Developers](https://developers.tiendanube.com/)
 2. Crea una nueva aplicación
 3. Configura las URLs de redirección:
-   - **Desarrollo**: \`http://localhost:3000/api/auth/callback/tiendanube\`
-   - **Producción**: \`https://tu-app.vercel.app/api/auth/callback/tiendanube\`
+   - **Desarrollo**: `http://localhost:3000/api/auth/callback/tiendanube`
+   - **Producción**: `https://tu-app.vercel.app/api/auth/callback/tiendanube`
 4. Copia el Client ID y Client Secret
 
 ### 5. Ejecutar en desarrollo
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
 
@@ -76,9 +76,9 @@ La aplicación estará disponible en [http://localhost:3000](http://localhost:30
 
 ### 1. Preparar el proyecto
 
-\`\`\`bash
+```bash
 npm run build
-\`\`\`
+```
 
 ### 2. Conectar con Vercel
 
@@ -90,19 +90,19 @@ npm run build
 
 En el dashboard de Vercel, agrega estas variables:
 
-\`\`\`env
+```env
 NEXT_PUBLIC_TIENDANUBE_CLIENT_ID=tu_client_id_aqui
 TIENDANUBE_CLIENT_SECRET=tu_client_secret_aqui
 NEXT_PUBLIC_TIENDANUBE_REDIRECT_URI=https://tu-app.vercel.app/api/auth/callback/tiendanube
 NEXTAUTH_URL=https://tu-app.vercel.app
 NEXTAUTH_SECRET=tu_secret_muy_seguro_aqui
-\`\`\`
+```
 
 ### 4. Desplegar
 
-\`\`\`bash
+```bash
 git push origin main
-\`\`\`
+```
 
 Vercel desplegará automáticamente tu aplicación.
 
@@ -133,7 +133,7 @@ La aplicación calculará automáticamente:
 
 ## 🏗️ Estructura del Proyecto
 
-\`\`\`
+```
 ├── app/                    # App Router de Next.js
 │   ├── api/               # API Routes
 │   │   ├── auth/          # Autenticación OAuth
@@ -153,19 +153,19 @@ La aplicación calculará automáticamente:
 │   ├── profitability-calculator.js # Cálculos de rentabilidad
 │   └── data-storage.js    # Persistencia de datos
 └── package.json           # Dependencias y scripts
-\`\`\`
+```
 
 ## 🔧 API Endpoints
 
 ### Autenticación
-- \`/api/auth/[...nextauth]\` - NextAuth.js handlers
-- \`/api/auth/callback/tiendanube\` - Callback OAuth de Tiendanube
+- `/api/auth/[...nextauth]` - NextAuth.js handlers
+- `/api/auth/callback/tiendanube` - Callback OAuth de Tiendanube
 
 ### Datos
-- \`/api/sales/[date]\` - Obtener ventas de una fecha específica
-- \`/api/config\` - Configuración de usuario
-- \`/api/calculations\` - Cálculos de rentabilidad guardados
-- \`/api/test-connection\` - Probar conexión con Tiendanube
+- `/api/sales/[date]` - Obtener ventas de una fecha específica
+- `/api/config` - Configuración de usuario
+- `/api/calculations` - Cálculos de rentabilidad guardados
+- `/api/test-connection` - Probar conexión con Tiendanube
 
 ## 🎨 Personalización
 
@@ -173,21 +173,21 @@ La aplicación calculará automáticamente:
 
 La aplicación usa una paleta de colores personalizada basada en verde:
 
-\`\`\`css
+```css
 :root {
   --konrad-50: #f0fdf4;
   --konrad-600: #16a34a;
   --konrad-900: #14532d;
 }
-\`\`\`
+```
 
 ### Componentes
 
 Los componentes están diseñados para ser modulares y reutilizables. Puedes personalizar:
 
-- Estilos en \`tailwind.config.js\`
-- Componentes en \`/components\`
-- Lógica de cálculo en \`/lib\`
+- Estilos en `tailwind.config.js`
+- Componentes en `/components`
+- Lógica de cálculo en `/lib`
 
 ## 🐛 Solución de Problemas
 
